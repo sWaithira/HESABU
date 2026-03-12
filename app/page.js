@@ -1,65 +1,92 @@
-import Image from "next/image";
+export default function HomePage() {
+  const tools = [
+    {
+      emoji: "📱",
+      title: "M-Pesa Fee Calculator",
+      description: "Instantly see what Safaricom charges — no more scrolling through a 4-page PDF.",
+      href: "/tools/mpesa",
+      ready: true,
+    },
+    {
+      emoji: "💰",
+      title: "Salary & PAYE Calculator",
+      description: "Enter your gross salary, see exactly what lands in your pocket after KRA is done with it.",
+      href: "/tools/salary",
+      ready: false,
+    },
+    {
+      emoji: "📶",
+      title: "Data Bundle Comparator",
+      description: "Find out which provider gives you the most MBs for your money.",
+      href: "/tools/bundles",
+      ready: false,
+    },
+  ];
 
-export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div>
+      {/* Hero */}
+      <section style={{
+        background: "var(--dark)",
+        color: "white",
+        padding: "80px 24px",
+        textAlign: "center",
+      }}>
+        <h1 style={{ fontSize: "42px", fontWeight: "bold", marginBottom: "16px", lineHeight: 1.2 }}>
+          Tools Built for <span style={{ color: "var(--gold)" }}>Kenya</span>
+        </h1>
+        <p style={{ fontSize: "18px", color: "#a8d5b8", maxWidth: "520px", margin: "0 auto" }}>
+          Free, accurate, and fast — because financial clarity shouldn't require a finance degree.
+        </p>
+      </section>
+
+      {/* Tools Grid */}
+      <section style={{ maxWidth: "960px", margin: "0 auto", padding: "60px 24px" }}>
+        <h2 style={{ fontSize: "22px", fontWeight: "bold", color: "var(--dark)", marginBottom: "32px" }}>
+          All Tools
+        </h2>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+          gap: "20px",
+        }}>
+          {tools.map((tool) => (
+              <a
+              key={tool.href}
+              href={tool.ready ? tool.href : "#"}
+              style={{
+                display: "block",
+                border: "1px solid #e5e5e5",
+                borderRadius: "12px",
+                padding: "28px",
+                textDecoration: "none",
+                color: "inherit",
+                background: "white",
+                opacity: tool.ready ? 1 : 0.6,
+                cursor: tool.ready ? "pointer" : "default",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              <span style={{ fontSize: "32px" }}>{tool.emoji}</span>
+              <h3 style={{ fontWeight: "bold", color: "var(--dark)", margin: "12px 0 6px" }}>
+                {tool.title}
+              </h3>
+              <p style={{ fontSize: "14px", color: "#666", lineHeight: 1.6 }}>
+                {tool.description}
+              </p>
+              {tool.ready && (
+                <span style={{ display: "inline-block", marginTop: "16px", fontSize: "13px", fontWeight: "600", color: "var(--green)" }}>
+                  Open tool →
+                </span>
+              )}
+              {!tool.ready && (
+                <span style={{ display: "inline-block", marginTop: "16px", fontSize: "12px", color: "#aaa" }}>
+                  Coming soon
+                </span>
+              )}
+            </a>
+          ))}
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </section>
     </div>
   );
 }
