@@ -42,9 +42,9 @@ export default function MpesaCalculator() {
   }
 
   function shareResult() {
-  if (!result) return;
-  const text = `${result.label}: KES ${result.amount.toLocaleString()} → Fee: KES ${result.fee.toLocaleString()} → Total: KES ${result.total.toLocaleString()} | hesabu.co.ke`;
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(
+    `Calculate your M-Pesa charges instantly → hesabu.co.ke/tools/mpesa`
+  );
   setToast(true);
   setTimeout(() => setToast(false), 2500);
 }

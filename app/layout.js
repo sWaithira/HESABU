@@ -42,38 +42,6 @@ export default function RootLayout({ children }) {
         </nav>
 
         <main>{children}</main>
-
-        <footer style={{
-  borderTop: "1px solid rgba(26,122,74,0.2)",
-  padding: "20px 24px",
-  textAlign: "center",
-  marginTop: "40px",
-  background: "var(--dark)",
-}}>
-  <p style={{ fontSize: "12px", color: "#a8d5b8" }}>
-    © {new Date().getFullYear()}{" "}
-    <a href="/" style={{ color: "#ffffff", textDecoration: "none", fontWeight: "600" }}>
-      Hesabu
-    </a>
-    {" "}· Built with ❤️ in Kenya
-  </p>
-  
-  <a
-    href="https://portfolio-website-sepia-rho.vercel.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-    style={{
-      display: "inline-block",
-      marginTop: "6px",
-      fontSize: "12px",
-      color: "#C8952A",
-      textDecoration: "none",
-      fontWeight: "500",
-    }}
-  >
-    Made by Susan →
-  </a>
-</footer>
       </body>
     </html>
   );

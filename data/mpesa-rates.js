@@ -73,3 +73,37 @@ export function getFee(amount, rateTable) {
   const band = rateTable.find(r => amount >= r.min && amount <= r.max);
   return band ? band.fee : null;
 }
+
+// ─── FULIZA ───────────────────────────────────────────────────────────────────
+// Source: Safaricom/NCBA Official Fuliza Key Facts Document
+// ⚠️  Update this file if Safaricom revises Fuliza tariffs
+
+export const fulizaDailyFee = [
+  { min: 0,     max: 100,   dailyFee: 0,    graceDays: 0 },
+  { min: 101,   max: 500,   dailyFee: 2.50, graceDays: 3 },
+  { min: 501,   max: 1000,  dailyFee: 5,    graceDays: 3 },
+  { min: 1001,  max: 1500,  dailyFee: 18,   graceDays: 0 },
+  { min: 1501,  max: 2500,  dailyFee: 20,   graceDays: 0 },
+  { min: 2501,  max: 70000, dailyFee: 25,   graceDays: 0 },
+];
+
+export function getFulizaCost(amount, days) {
+  const band = fulizaDailyFee.find(r => amount >= r.min && amount <= r.max);
+  if (!band) return null;
+
+  const accessFee      = Math.ceil(amount * 0.01);
+  const graceDays      = band.graceDays;
+  const chargeableDays = Math.max(0, days - graceDays);
+  const dailyTotal     = Math.ceil(band.dailyFee * chargeableDays);
+  const totalCost      = accessFee + dailyTotal;
+
+  return {
+    accessFee,
+    dailyFee: band.dailyFee,
+    graceDays,
+    chargeableDays,
+    dailyTotal,
+    totalCost,
+    totalRepay: amount + totalCost,
+  };
+}
