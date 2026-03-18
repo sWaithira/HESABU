@@ -151,7 +151,7 @@ export default function AboutPage() {
           {[
             { label: "GitHub",    href: "https://github.com/sWaithira", color: "#1A7A4A", bg: "#E8F5EE" },
             { label: "Portfolio", href: "https://portfolio-website-sepia-rho.vercel.app/", color: "#0C447C", bg: "#E6F1FB" },
-            { label: "Email",     href: "mailto:sw.nyawira@gmail.com", color: "#3d2c00", bg: "#FFF5E8" },
+            { label: "Email",     href: "mailto:hesabutools@gmail.com", color: "#3d2c00", bg: "#FFF5E8" },
           ].map(link => (
             <a
               key={link.label}
