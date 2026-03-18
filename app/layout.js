@@ -5,7 +5,9 @@ export const metadata = {
     default: "Hesabu — Free Kenyan Financial Tools",
     template: "%s | Hesabu",
   },
-  description: "Free, accurate calculators for Kenyans — M-Pesa fees, salary tax, data bundles and more. Because Safaricom thought a 4-page PDF was the best way to tell you what sending KES 500 costs.",
+  verification: {
+    google:"dplSoSL4n9N-kmNwzgWuIgeQIYjrI0EQQbKrrItlMwM" ,
+  },
   keywords: ["M-Pesa calculator", "Kenya salary calculator", "PAYE calculator", "Kenya tax", "hesabu"],
 };
 
