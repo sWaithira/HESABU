@@ -30,10 +30,10 @@ export default function FulizaCalculator() {
       const borrowed = new Date(borrowDate);
       const today    = new Date();
       daysElapsed    = Math.max(1, Math.floor((today - borrowed) / (1000 * 60 * 60 * 24)) + 1);
-      if (daysElapsed > 30) {
-        setError("It has been over 30 days. Your Fuliza limit may be frozen — call Safaricom on 100 immediately.");
-        return;
-      }
+if (daysElapsed > 30) {
+  setError("You will not have access to your Fuliza limit if you have any unpaid balance after Day 30. Repay your full balance to restore your limit — or call Safaricom on 100.");
+  return;
+}
     }
 
     const calc = getFulizaCost(value, daysElapsed);
@@ -46,11 +46,23 @@ function share() {
   const text = mode === "owe"
     ? `I have ${daysLeft} day${daysLeft === 1 ? "" : "s"} left to repay my Fuliza — calculate yours at hesabu.co.ke/tools/fuliza`
     : `Calculate what your Fuliza will cost you → hesabu.co.ke/tools/fuliza`;
-  navigator.clipboard.writeText(text);
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text);
+  } else {
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.style.position = "fixed";
+    el.style.opacity = "0";
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  }
   setToast(true);
   setTimeout(() => setToast(false), 2500);
 }
-
   return (
     <div style={{ minHeight: "100vh", background: "var(--page-bg)", padding: "0 0 60px" }}>
       <style>{`
@@ -251,46 +263,45 @@ function share() {
 />
         </div>
 
-        {/* Plan mode — days selector */}
-        {mode === "plan" && (
-          <>
-            <div style={{ fontSize: "11px", fontWeight: "600", color: "var(--label-color)", letterSpacing: "0.6px", marginBottom: "10px" }}>
-              DAYS TO REPAY
-              <span style={{ float: "right", fontSize: "13px", color: "var(--text-primary)", fontWeight: "700" }}>
-                {days} {days === 1 ? "day" : "days"}
-              </span>
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "6px", marginBottom: "10px" }}>
-              {[1, 3, 7, 14, 30].map(d => (
-                <button
-                  key={d}
-                  className={`day-btn${days === d ? " active" : ""}`}
-                  onClick={() => { setDays(d); setResult(null); }}
-                >
-                  {d}d
-                </button>
-              ))}
-            </div>
-            <div style={{ position: "relative", marginBottom: "20px" }}>
-              <span style={{ position: "absolute", left: "14px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "var(--text-muted)", pointerEvents: "none" }}>Custom</span>
-              <input
-                type="number" min="1" max="30"
-                value={days}
-                onChange={e => {
-                  const val = Math.min(30, Math.max(1, Number(e.target.value)));
-                  setDays(val); setResult(null);
-                }}
-                style={{
-                  width: "100%", padding: "12px 60px 12px 80px",
-                  borderRadius: "10px", border: "1.5px solid var(--input-border)",
-                  background: "var(--card-bg)", color: "var(--text-primary)",
-                  fontSize: "16px", outline: "none", fontFamily: "inherit",
-                }}
-              />
-              <span style={{ position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)", fontSize: "13px", color: "var(--text-muted)", pointerEvents: "none" }}>/ 30</span>
-            </div>
-          </>
-        )}
+{/* Plan mode — days selector */}
+{mode === "plan" && (
+  <>
+    <div style={{ fontSize:"11px", fontWeight:"600", color:"var(--label-color)", letterSpacing:"0.6px", marginBottom:"10px" }}>
+      HOW MANY DAYS TO REPAY?
+      <span style={{ float:"right", fontSize:"13px", color:"var(--text-primary)", fontWeight:"700" }}>
+        {days} {days === 1 ? "day" : "days"}
+      </span>
+    </div>
+    <div style={{ position:"relative", marginBottom:"20px" }}>
+      <input
+        type="number"
+        min="1"
+        max="30"
+        value={days}
+        onChange={e => {
+          const val = Math.min(30, Math.max(1, Number(e.target.value)));
+          setDays(val);
+          setResult(null);
+        }}
+        style={{
+          width:"100%",
+          padding:"14px 60px 14px 14px",
+          borderRadius:"12px",
+          border:"1.5px solid var(--input-border)",
+          background:"var(--card-bg)",
+          color:"var(--text-primary)",
+          fontSize:"20px",
+          fontWeight:"500",
+          outline:"none",
+          fontFamily:"inherit",
+        }}
+      />
+      <span style={{ position:"absolute", right:"14px", top:"50%", transform:"translateY(-50%)", fontSize:"13px", color:"var(--text-muted)", pointerEvents:"none" }}>
+        / 30 max
+      </span>
+    </div>
+  </>
+)}
 
         {/* Owe mode — date picker */}
         {mode === "owe" && (
@@ -416,9 +427,9 @@ function share() {
           {showCrb && (
             <div className="receipt-animate" style={{ padding: "16px", background: "var(--crb-bg)", border: "1px solid var(--crb-border)", borderTop: "none", borderRadius: "0 0 10px 10px" }}>
               {[
-                { emoji: "✅", title: "Positive listing", desc: "You pay on time. This builds your credit score and helps you access better loans, higher limits, and lower interest rates in future." },
-                { emoji: "❌", title: "Negative listing", desc: "You defaulted. Lenders see this and will reject your loan applications, offer worse terms, or charge higher interest. This stays on your record for up to 5 years." },
-                { emoji: "📵", title: "What gets blocked", desc: "Bank loans, mobile credit (M-Shwari, KCB M-Pesa, Tala, Branch), business tenders, and in some cases even employment opportunities." },
+                { emoji: "✅", title: "Positive listing", desc: "You pay on time. This builds your credit score and helps you access better loans, higher limits and lower interest rates in future." },
+                { emoji: "❌", title: "Negative listing", desc: "You defaulted. Lenders see this and will reject your loan applications, offer worse terms or charge higher interest. This stays on your record for up to 5 years." },
+                { emoji: "📵", title: "What gets blocked", desc: "Bank loans, mobile credit (M-Shwari, KCB M-Pesa, Tala, Branch), business tenders and in some cases even employment opportunities." },
                 { emoji: "🔓", title: "How to clear it", desc: "Pay off the outstanding Fuliza balance. Once settled, the negative listing is removed. You can also dispute incorrect listings directly with the CRB." },
                 { emoji: "📋", title: "Your rights", desc: "You're entitled to one free credit report per year. If a listing is wrong, you can dispute it in writing with the bureau within 30 days." },
               ].map(item => (

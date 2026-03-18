@@ -70,7 +70,7 @@ export default function AboutPage() {
     {[
       { emoji: "📱", title: "Calculate M-Pesa fees",        desc: "Know exactly what Safaricom charges before you send or withdraw — no surprises." },
       { emoji: "💳", title: "Understand Fuliza costs",      desc: "Find out what borrowing via Fuliza will actually cost you over time." },
-      { emoji: "💰", title: "Break down your salary",       desc: "See your gross salary split into PAYE, NHIF, NSSF, housing levy — and your net pay. Coming soon." },
+      { emoji: "💰", title: "Break down your salary",       desc: "See your gross salary split into PAYE, NHIF, NSSF, housing levy — and your net pay." },
       { emoji: "🏦", title: "Estimate loan repayments",     desc: "Understand what a SACCO or bank loan will cost you monthly. Coming soon." },
     ].map(item => (
       <div key={item.title} style={{
@@ -188,7 +188,7 @@ export default function AboutPage() {
   <FeedbackForm />
 </div>
 
-{/* DONATE SECTION 
+{/* DONATE SECTION
 <div style={{ height: "1px", background: "#e5e5e5", margin: "32px 0" }} />
 
 <div style={{ marginBottom: "40px" }}>

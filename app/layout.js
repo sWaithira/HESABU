@@ -26,15 +26,9 @@ export default function RootLayout({ children }) {
   zIndex: 100,
   borderBottom: "1px solid rgba(255,255,255,0.08)",
 }}>
-          <a href="/" style={{
-            color: "white",
-            textDecoration: "none",
-            fontSize: "22px",
-            fontWeight: "bold",
-            letterSpacing: "-0.5px",
-          }}>
-            He<span style={{ color: "var(--gold)" }}>sabu</span>
-          </a>
+<a href="/" style={{ color:"white", textDecoration:"none", fontSize:"22px", fontWeight:"bold", letterSpacing:"-0.5px" }}>
+  He<span style={{ color:"#C8952A" }}>sabu</span>
+</a>
           <div style={{ display: "flex", gap: "24px" }}>
             <a href="/" style={{ color: "#a8d5b8", textDecoration: "none", fontSize: "14px" }}>Tools</a>
             <a href="/about" style={{ color: "#a8d5b8", textDecoration: "none", fontSize: "14px" }}>About</a>

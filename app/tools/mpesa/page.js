@@ -41,10 +41,22 @@ export default function MpesaCalculator() {
     setAmount("");
   }
 
-  function shareResult() {
-  navigator.clipboard.writeText(
-    `Calculate your M-Pesa charges instantly → hesabu.co.ke/tools/mpesa`
-  );
+function share() {
+  const text = `Calculate your M-Pesa charges instantly → hesabu.co.ke/tools/mpesa`;
+  
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text);
+  } else {
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.style.position = "fixed";
+    el.style.opacity = "0";
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  }
   setToast(true);
   setTimeout(() => setToast(false), 2500);
 }
@@ -333,7 +345,7 @@ export default function MpesaCalculator() {
 
       {/* Share button */}
       <button
-        onClick={shareResult}
+        onClick={share}
         style={{
           width: "100%", marginTop: "16px",
           padding: "11px", borderRadius: "10px",

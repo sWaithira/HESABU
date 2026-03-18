@@ -12,14 +12,12 @@
   margin: 0;
   padding: 0;
 }
-
 body {
   font-family: system-ui, sans-serif;
   background: #ffffff;
   color: #1a1a1a;
 }
 
-/* Smooth hover transitions on anything clickable */
 a, button {
   transition: all 0.2s ease;
 }

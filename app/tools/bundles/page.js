@@ -13,11 +13,12 @@ const PROVIDER_COLORS = {
 };
 
 export default function BundleComparator() {
-  const [mode, setMode]         = useState("usecase"); // "usecase" | "browse"
+  const [mode, setMode]         = useState("usecase");
   const [useCase, setUseCase]   = useState(useCases[0]);
   const [duration, setDuration] = useState(durations[1]);
   const [validity, setValidity] = useState("weekly");
   const [toast, setToast]       = useState(false);
+  const [showGbHelp, setShowGbHelp] = useState(false); 
 
   const recommendations = useMemo(
     () => getRecommendations(useCase, duration, validity),
@@ -34,13 +35,25 @@ export default function BundleComparator() {
     return result;
   }, [validity]);
 
-  function share() {
-    navigator.clipboard.writeText(
-      `Find the best data bundle in Kenya → hesabu.co.ke/tools/bundles`
-    );
-    setToast(true);
-    setTimeout(() => setToast(false), 2500);
+function share() {
+  const text =  `Find the best data bundle in Kenya → hesabu.co.ke/tools/bundles`
+  
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text);
+  } else {
+    const el = document.createElement("textarea");
+    el.value = text;
+    el.style.position = "fixed";
+    el.style.opacity = "0";
+    document.body.appendChild(el);
+    el.focus();
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
   }
+  setToast(true);
+  setTimeout(() => setToast(false), 2500);
+}
 
   return (
     <div style={{ minHeight:"100vh", background:"var(--page-bg)", paddingBottom:"60px" }}>
@@ -379,6 +392,49 @@ export default function BundleComparator() {
               </p>
             </>
           )}
+
+{/* KES/GB explainer */}
+<div style={{ marginTop:"20px", marginBottom:"12px" }}>
+  <button
+    onClick={() => setShowGbHelp(!showGbHelp)}
+    style={{
+      width:"100%", padding:"12px 16px",
+      borderRadius:"10px",
+      border:"1px solid var(--idle-border)",
+      background:"var(--free-bg)",
+      color:"var(--label-color)",
+      fontSize:"13px", fontWeight:"600",
+      cursor:"pointer", fontFamily:"inherit",
+      textAlign:"left",
+      display:"flex", justifyContent:"space-between", alignItems:"center",
+    }}
+  >
+    <span>What does KES/GB mean?</span>
+    <span>{showGbHelp ? "↑" : "↓"}</span>
+  </button>
+
+  {showGbHelp && (
+    <div className="animate" style={{ padding:"16px", background:"var(--free-bg)", border:"1px solid var(--idle-border)", borderTop:"none", borderRadius:"0 0 10px 10px", fontSize:"13px", color:"var(--text-muted)", lineHeight:1.8 }}>
+      <p style={{ marginBottom:"12px" }}>
+        <strong style={{ color:"var(--label-color)" }}>KES per GB</strong> tells you how much you pay for every gigabyte of data. Lower = better deal.
+      </p>
+      <p style={{ marginBottom:"12px" }}>
+        Think of it like buying unga — you don't just look at the total price, you check the price per kilo. Same logic here.
+      </p>
+      <div style={{ background:"var(--card-bg)", borderRadius:"8px", padding:"12px", marginBottom:"8px" }}>
+        <div style={{ fontWeight:"600", color:"var(--label-color)", marginBottom:"6px", fontSize:"12px" }}>Example:</div>
+        <div style={{ fontSize:"12px", lineHeight:2 }}>
+          Safaricom KES 250 → 500MB = <strong style={{ color:"var(--paye-color)" }}>KES 512/GB</strong><br/>
+          Airtel KES 250 → 1GB = <strong style={{ color:"#1A7A4A" }}>KES 250/GB</strong> ← better deal<br/>
+          Same price. Airtel gives you twice the data.
+        </div>
+      </div>
+      <p style={{ fontSize:"12px" }}>
+        1GB = 1,024MB. So we divide the price by (MB ÷ 1,024) to get KES per GB.
+      </p>
+    </div>
+  )}
+</div>
 
           {/* Info */}
           <div style={{ padding:"16px", background:"var(--free-bg)", borderRadius:"12px", marginTop:"8px" }}>

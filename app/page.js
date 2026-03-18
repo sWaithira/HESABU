@@ -31,7 +31,7 @@ const tools = [
     color:    "#378ADD",
     bg:       "#E6F1FB",
     textColor:"#0C447C",
-    ready:    false,
+    ready:    true,
     category: "Salary & Tax",
   },
   {
@@ -45,6 +45,17 @@ const tools = [
     ready:    true,
     category: "Telecom",
   },
+{
+  slug:     "loans",
+  emoji:    "🏦",
+  title:    "Loan Repayment Calculator",
+  desc:     "Estimate what a SACCO or bank loan will cost you monthly. Coming soon.", // ← desc not description
+  color:    "#0F6E56",
+  bg:       "#E1F5EE",
+  textColor:"#04342C",
+  ready:    false,
+  category: "Loans & Credit",
+},
 ];
 
 export default function HomePage() {
@@ -210,7 +221,7 @@ export default function HomePage() {
         textAlign: "center",
       }}>
         <p style={{ fontSize: "14px", color: "#888", lineHeight: 1.8, marginBottom: "16px" }}>
-          Built in Kenya. Every tool uses official data from Safaricom, KRA and NCBA — updated when rates change.
+          Built in Kenya. Every tool uses official data — updated when rates change.
         </p>
         <Link href="/about" style={{
           fontSize: "13px",
