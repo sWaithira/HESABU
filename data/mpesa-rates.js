@@ -74,9 +74,8 @@ export function getFee(amount, rateTable) {
   return band ? band.fee : null;
 }
 
-// ─── FULIZA ───────────────────────────────────────────────────────────────────
+//  FULIZA
 // Source: Safaricom/NCBA Official Fuliza Key Facts Document
-// ⚠️  Update this file if Safaricom revises Fuliza tariffs
 
 export const fulizaDailyFee = [
   { min: 0,     max: 100,   dailyFee: 0,    graceDays: 0 },
