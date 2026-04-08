@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { providers, budgets } from "@/data/fibre";
+import { shareLinks } from "@/data/config";
 
 export default function FibreComparator() {
   const [budget, setBudget] = useState(budgets[1]);
@@ -24,7 +25,7 @@ export default function FibreComparator() {
   }, [budget]);
 
   function share() {
-    const text = `Compare home fibre providers in Kenya → hesabu.co.ke/tools/fibre`;
+    const text = shareLinks.fibre;
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text);
     } else {
@@ -580,7 +581,7 @@ export default function FibreComparator() {
             }}
           >
             <strong style={{ display: "block", marginBottom: "4px" }}>
-              ⚡ Starlink — anywhere in Kenya
+              Starlink — anywhere in Kenya
             </strong>
             Unlike fibre providers, Starlink works in rural areas and upcountry.
             One-time equipment cost of approx. KES 45,000 — no monthly contract.
