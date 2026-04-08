@@ -230,9 +230,14 @@ export default function HomePage() {
         }}
       >
         {[
-          { icon: "✓", text: "Official data sources" },
-          { icon: "✓", text: "No login required" },
-          { icon: "✓", text: "Mobile friendly" },
+          {
+            icon: <i className="fa-solid fa-database"></i>,
+            text: "Official data sources",
+          },
+          {
+            icon: <i className="fa-solid fa-user-check"></i>,
+            text: "No login required",
+          },
         ].map((item) => (
           <div
             key={item.text}
@@ -248,7 +253,6 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* Bottom CTA */}
       <section
         style={{
           maxWidth: "500px",

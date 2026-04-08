@@ -336,7 +336,6 @@ export default function SalaryCalculator() {
           </div>
         )}
 
-        {/* Result receipt */}
         {result && (
           <div
             className="animate"
@@ -348,7 +347,6 @@ export default function SalaryCalculator() {
               background: "var(--receipt-bg)",
             }}
           >
-            {/* Header */}
             <div
               style={{
                 background: "var(--receipt-hdr)",
@@ -379,7 +377,6 @@ export default function SalaryCalculator() {
             </div>
 
             <div style={{ padding: "16px" }}>
-              {/* Gross */}
               <div
                 style={{
                   display: "flex",
@@ -402,7 +399,6 @@ export default function SalaryCalculator() {
                 </span>
               </div>
 
-              {/* Statutory deductions */}
               {[
                 {
                   label: "PAYE (income tax)",
@@ -497,7 +493,6 @@ export default function SalaryCalculator() {
                 </div>
               ))}
 
-              {/* Statutory total */}
               <div
                 style={{
                   display: "flex",
@@ -520,7 +515,6 @@ export default function SalaryCalculator() {
                 </span>
               </div>
 
-              {/* After tax */}
               <div
                 style={{
                   display: "flex",
@@ -546,7 +540,6 @@ export default function SalaryCalculator() {
                 </span>
               </div>
 
-              {/* Other deductions — only show if filled */}
               {result.otherDeductions > 0 && (
                 <div
                   style={{
@@ -585,7 +578,6 @@ export default function SalaryCalculator() {
                 </div>
               )}
 
-              {/* Final take home */}
               <div
                 style={{
                   display: "flex",
@@ -659,25 +651,45 @@ export default function SalaryCalculator() {
             >
               {[
                 {
-                  emoji: "🏛️",
+                  emoji: (
+                    <i
+                      className="fa-solid fa-building-columns"
+                      style={{ color: "var(--label-color)" }}
+                    ></i>
+                  ),
                   name: "PAYE",
                   color: "var(--paye-color)",
                   desc: "Pay As You Earn — income tax collected by KRA. The more you earn, the higher the rate (10% to 35%). You get a KES 2,400 personal relief every month.",
                 },
                 {
-                  emoji: "🏦",
+                  emoji: (
+                    <i
+                      className="fa-solid fa-person-shelter"
+                      style={{ color: "var(--label-color)" }}
+                    ></i>
+                  ),
                   name: "NSSF",
                   color: "var(--nssf-color)",
                   desc: "National Social Security Fund — your pension savings. 6% of your salary up to KES 9,000, then 6% on the next tier. You'll get this back when you retire.",
                 },
                 {
-                  emoji: "🏥",
+                  emoji: (
+                    <i
+                      className="fa-solid fa-hospital"
+                      style={{ color: "var(--label-color)" }}
+                    ></i>
+                  ),
                   name: "SHIF",
                   color: "var(--shif-color)",
                   desc: "Social Health Insurance Fund — replaced NHIF in October 2024. 2.75% of your gross salary. Covers you and your dependants for medical care at accredited facilities.",
                 },
                 {
-                  emoji: "🏠",
+                  emoji: (
+                    <i
+                      className="fa-solid fa-building"
+                      style={{ color: "var(--label-color)" }}
+                    ></i>
+                  ),
                   name: "Housing Levy",
                   color: "var(--housing-color)",
                   desc: "Affordable Housing Levy — 1.5% of gross salary. Goes toward the government's affordable housing program. Your employer also contributes 1.5% on your behalf.",
