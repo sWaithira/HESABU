@@ -694,11 +694,11 @@ export default function FibreComparator() {
             GOOD TO KNOW
           </div>
           {[
-            "Advertised speeds are 'up to' — real speeds depend on your area and time of day",
+            "Advertised speeds are 'up to' real speeds depend on your area and time of day",
             "Always confirm coverage at your specific address before signing up",
             "Starlink is the only provider with true nationwide rural coverage",
             "Poa! Internet focuses on affordable access in Nairobi informal settlements",
-            "Most providers offer free installation — always ask before signing",
+            "Most providers offer free installation always ask before signing",
           ].map((item) => (
             <div
               key={item}

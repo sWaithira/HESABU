@@ -175,7 +175,6 @@ export default function AboutPage() {
 
       <div style={{ height: "1px", background: "#e5e5e5", margin: "32px 0" }} />
 
-      {/* Divider */}
       <div style={{ height: "1px", background: "#e5e5e5", margin: "32px 0" }} />
 
       {/* About creator */}
@@ -242,7 +241,7 @@ export default function AboutPage() {
           <p>
             I'm a computer science student and developer interested in building
             practical tools that solve real-world problems. I enjoy turning
-            complex systems into simple, usable software — especially tools that
+            complex systems into simple, usable software especially tools that
             make everyday life easier.
           </p>
           <p>
@@ -251,7 +250,7 @@ export default function AboutPage() {
             can simplify real financial decisions for people.
           </p>
           <p>
-            Hesabu is also part of my journey as a developer — building useful
+            Hesabu is also part of my journey as a developer, building useful
             software, learning from the public and improving one tool at a
             time.I'm currently looking for opportunities to collaborate,
             contribute to real-world projects and grow as a developer.
@@ -259,10 +258,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Divider */}
       <div style={{ height: "1px", background: "#e5e5e5", margin: "32px 0" }} />
 
-      {/* Connect */}
       <div style={{ marginBottom: "40px" }}>
         <h2
           style={{
@@ -340,7 +337,7 @@ export default function AboutPage() {
           }}
         >
           Found a bug? Have a tool idea? Something not calculating right? Tell
-          me — this is how Hesabu improves.
+          me this is how Hesabu improves.
         </p>
         <FeedbackForm />
       </div>
@@ -391,7 +388,7 @@ export default function AboutPage() {
         }}
       >
         <p style={{ fontSize: "13px", color: "#a8d5b8", lineHeight: 1.8 }}>
-          Hesabu is built one tool at a time — with the goal of making financial
+          Hesabu is built one tool at a time with the goal of making financial
           information simpler, clearer and accessible to everyone.
         </p>
         <p style={{ fontSize: "12px", color: "#6db890", marginTop: "8px" }}>

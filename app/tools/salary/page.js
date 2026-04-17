@@ -659,7 +659,7 @@ export default function SalaryCalculator() {
                   ),
                   name: "PAYE",
                   color: "var(--paye-color)",
-                  desc: "Pay As You Earn — income tax collected by KRA. The more you earn, the higher the rate (10% to 35%). You get a KES 2,400 personal relief every month.",
+                  desc: "Pay As You Earn - income tax collected by KRA. The more you earn, the higher the rate (10% to 35%). You get a KES 2,400 personal relief every month.",
                 },
                 {
                   emoji: (
@@ -670,7 +670,7 @@ export default function SalaryCalculator() {
                   ),
                   name: "NSSF",
                   color: "var(--nssf-color)",
-                  desc: "National Social Security Fund — your pension savings. 6% of your salary up to KES 9,000, then 6% on the next tier. You'll get this back when you retire.",
+                  desc: "National Social Security Fund - your pension savings. 6% of your salary up to KES 9,000, then 6% on the next tier. You'll get this back when you retire.",
                 },
                 {
                   emoji: (
@@ -681,7 +681,7 @@ export default function SalaryCalculator() {
                   ),
                   name: "SHIF",
                   color: "var(--shif-color)",
-                  desc: "Social Health Insurance Fund — replaced NHIF in October 2024. 2.75% of your gross salary. Covers you and your dependants for medical care at accredited facilities.",
+                  desc: "Social Health Insurance Fund - replaced NHIF in October 2024. 2.75% of your gross salary. Covers you and your dependants for medical care at accredited facilities.",
                 },
                 {
                   emoji: (
@@ -692,7 +692,7 @@ export default function SalaryCalculator() {
                   ),
                   name: "Housing Levy",
                   color: "var(--housing-color)",
-                  desc: "Affordable Housing Levy — 1.5% of gross salary. Goes toward the government's affordable housing program. Your employer also contributes 1.5% on your behalf.",
+                  desc: "Affordable Housing Levy - 1.5% of gross salary. Goes toward the government's affordable housing program. Your employer also contributes 1.5% on your behalf.",
                 },
               ].map((item) => (
                 <div
