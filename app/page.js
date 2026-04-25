@@ -107,8 +107,8 @@ export default function HomePage() {
             lineHeight: 1.6,
           }}
         >
-          Kenyan financial tools that actually make sense — because
-          understanding your money shouldn't feel like solving a puzzle.
+          Kenyan financial tools that actually make sense because understanding
+          your money shouldn't feel like solving a puzzle.
         </p>
       </section>
 

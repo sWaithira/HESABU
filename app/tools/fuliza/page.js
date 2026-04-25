@@ -489,7 +489,6 @@ export default function FulizaCalculator() {
           {mode === "plan" ? "Calculate Fuliza cost" : "Calculate what I owe"}
         </button>
 
-        {/* Toast */}
         {toast && (
           <div
             style={{
@@ -663,7 +662,7 @@ export default function FulizaCalculator() {
                     }}
                   >
                     <i className="fa-solid fa-triangle-exclamation"></i> Only{" "}
-                    {30 - result.days} days left — repay now to avoid CRB
+                    {30 - result.days} days left, repay now to avoid CRB
                     listing.
                   </span>
                 </div>
