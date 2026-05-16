@@ -269,7 +269,7 @@ export default function HomePage() {
             marginBottom: "16px",
           }}
         >
-          Every tool uses official data — updated when rates change.
+          Every tool uses official data updated when rates change.
         </p>
         <Link
           href="/about"
